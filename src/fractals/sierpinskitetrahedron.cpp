@@ -23,13 +23,14 @@ double SierpinskiTetrahedron::GetDistance(vec3 center, vec3 point,
   } else {
     double newRadius = radius / 2.0;
     double diff = radius / 2.0;
-    return glm::min(GetDistance(center + vec3(diff, diff, diff), point,
-                                newRadius, currlevel - 1),
-                    GetDistance(center + vec3(-diff, -diff, diff), point,
-                                newRadius, currlevel - 1),
-                    GetDistance(center + vec3(-diff, diff, -diff), point,
-                                newRadius, currlevel - 1),
-                    GetDistance(center + vec3(diff, -diff, -diff), point,
-                                newRadius, currlevel - 1));
+    return glm::min(
+            glm::min(GetDistance(center + vec3(diff, diff, diff), point,
+                                 newRadius, currlevel - 1),
+                     GetDistance(center + vec3(-diff, -diff, diff), point,
+                                 newRadius, currlevel - 1)),
+            glm::min(GetDistance(center + vec3(-diff, diff, -diff), point,
+                                 newRadius, currlevel - 1),
+                     GetDistance(center + vec3(diff, -diff, -diff), point,
+                                 newRadius, currlevel - 1)));
   }
 }

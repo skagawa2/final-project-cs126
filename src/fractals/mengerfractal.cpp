@@ -60,14 +60,14 @@ double MengerFractal::BoxDistance(vec3 boxCenter, vec3 point, double w,
                                   double h, double d) {
   vec3 dist = glm::abs(point - boxCenter) - vec3(w / 2, h / 2, d / 2);
   return glm::length(glm::max(dist, vec3(0.0)))
-         + glm::min(glm::max(dist.x, dist.y, dist.z), 0.0f);
+         + glm::min(glm::max(glm::max(dist.x, dist.y), dist.z), 0.0f);
 }
 
 double MengerFractal::CrossDistance(vec3 boxCenter, vec3 point, double size) {
   // gets the minimum distance of 3 elongated Boxes
-  return glm::min(
+  return glm::min(glm::min(
     BoxDistance(boxCenter, point, size + 0.5, size / 3.0, size / 3.0),
-    BoxDistance(boxCenter, point, size / 3.0, size + 0.5, size / 3.0),
+    BoxDistance(boxCenter, point, size / 3.0, size + 0.5, size / 3.0)),
     BoxDistance(boxCenter, point, size / 3.0, size / 3.0, size + 0.5)
   );
 }

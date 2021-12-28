@@ -8,12 +8,12 @@ double Tetrahedron::GetDistance(vec3 point) {
   vec3 diff =
   rotation_ == vec3(0) ? point - pos_ : RotatePoint(point, pos_, rotation_) -
   point;
-  return (glm::max(-diff.x - diff.y - diff.z,
-                    diff.x + diff.y - diff.z,
-                   -diff.x + diff.y + diff.z,
-                    diff.x - diff.y + diff.z) -
-          radius_) /
-         sqrt(3);
+  return (glm::max(
+              glm::max(-diff.x - diff.y - diff.z,
+                       diff.x + diff.y - diff.z),
+              glm::max(-diff.x + diff.y + diff.z,
+                       diff.x - diff.y + diff.z)) -
+          radius_) / sqrt(3);
 }
 
 vec3 Tetrahedron::RotatePoint(vec3 point, vec3 about, vec3 rotation) {
