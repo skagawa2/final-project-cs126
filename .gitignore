@@ -1,0 +1,6 @@
+bin/*
+obj/*
+*.xcodeproj/*
+*.xcconfig
+*.plist
+*.qbs
