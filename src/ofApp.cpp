@@ -16,7 +16,7 @@ void ofApp::setup() {
   cameraPos_.y = 5;
   cameraPos_.z = -10;
 
-  world_ = shared_ptr<World>(new FractalWorld());
+  world_ = shared_ptr<World>(new DemoWorld());
 }
 
 //--------------------------------------------------------------

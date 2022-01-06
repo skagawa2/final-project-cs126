@@ -10,8 +10,8 @@ class ofApp : public ofBaseApp {
 
   // CONSTANTS
   const double kMIN_DIST = 0.01;
-  const double kMAX_DIST = 50;
-  const int kMAX_MARCH_STEP = 50;
+  const double kMAX_DIST = 30;
+  const int kMAX_MARCH_STEP = 30;
   const ofColor kSKY_COLOR = ofColor(255);
   const double kSHADOW_FACTOR = 0.5;
   const double kBLEND_FACTOR = 0.5;
